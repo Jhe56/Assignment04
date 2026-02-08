@@ -12,12 +12,13 @@ services:
 
   backend:
     build: ./backend
-    #backend will be working with the database
-    #and frontend will be working with the backend
-    MYSQL_PASSWORD: myAssignment04Password
-    MYSQL_DB: test
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: myAssignment04Password
+      MYSQL_DB: test
 
-  #mysql readme and docker getting started todo webapp
+  #mysql readme and docker's getting started to-do-webapp
   db:
     image: mysql
     environment:
