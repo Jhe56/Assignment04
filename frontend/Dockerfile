@@ -2,4 +2,4 @@
 FROM node:25
 WORKDIR /frontend
 COPY ..
-RUN yarn install --production
+RUN npm install && npm run dev
