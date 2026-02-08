@@ -10,6 +10,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     #referenced from docker getting started todo webapp
+    #mapping local8080 to container 5173
     ports:
       - 8080:5173
 
