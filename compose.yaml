@@ -1,0 +1,15 @@
+#from the dockerdocs reference
+name: Assignment04
+
+#referencing the slides
+services:
+  frontend:
+    build:
+    #not sure if the ./ is good syntax
+    context: ./frontend
+    dockerfile: ./frontend.Dockerfile
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./backend.Dockerfile
