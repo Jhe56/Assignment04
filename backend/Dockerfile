@@ -2,5 +2,7 @@
 FROM node:25
 WORKDIR /backend
 COPY . /backend/
-RUN npm audit fix && npm install && npm start
+RUN npm install
+#gpt explained npm start isn't run at build time but meant for CMD
+CMD ["npm", "start"]
 #end of file
