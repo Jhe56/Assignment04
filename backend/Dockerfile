@@ -2,5 +2,5 @@
 FROM node:25
 WORKDIR /backend
 COPY . /backend/
-RUN npm install && npm start
+RUN npm audit fix && npm install && npm start
 #end of file
