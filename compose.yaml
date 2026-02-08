@@ -5,8 +5,22 @@ name: Assignment04
 services:
   frontend:
     #referencing dockerdocs/reference/compose-file
+    #build looks within specified directory for a Dockerfile
     build: ./frontend
+    #referenced from docker getting started todo webapp
+    working_dir: /bookApp
 
   backend:
     build: ./backend
+    #backend will be working with the database
+    #and frontend will be working with the backend
+    MYSQL_PASSWORD: myAssignment04Password
+    MYSQL_DB: test
 
+  #mysql readme and docker getting started todo webapp
+  db:
+    image: mysql
+    environment:
+      #according to mysql a password is mandatory
+      MYSQL_ROOT_PASSWORD: myAssignment04Password
+      MYSQL_DATABASE: test
