@@ -11,7 +11,7 @@ services:
       dockerfile: Dockerfile
     #referenced from docker getting started todo webapp
     ports:
-      - 8080:8080
+      - 8080:5173
 
   backend:
     build:
