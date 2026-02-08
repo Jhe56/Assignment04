@@ -4,10 +4,8 @@ name: Assignment04
 #referencing the slides
 services:
   frontend:
-    build:
-    #not sure if the ./ is good syntax
-    context: ./frontend
-    dockerfile: ./frontend.Dockerfile
+    #referencing dockerdocs/reference/compose-file
+    build: ./frontend
 
   backend:
     build:
