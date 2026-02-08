@@ -2,7 +2,7 @@
 FROM node:25
 WORKDIR /frontend
 COPY . /frontend/
-RUN npm install --omit=dev
+RUN npm install
 #gpt explains: run dev is not something done at build time
 #front end vite has some complaints about usig host to expose port
 CMD ["npm", "run", "dev", "--host"]
