@@ -6,15 +6,17 @@ services:
   frontend:
     #referencing dockerdocs/reference/compose-file
     #build looks within specified directory for a Dockerfile
-    context: ./frontend
-    dockerfile: Dockerfile
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     #referenced from docker getting started todo webapp
     working_dir: /bookApp
 
   backend:
-    context: ./backend
-    dockerfile: Dockerfile
-    #gpt describes this as a weird strict way for backend to check credentials
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      #gpt describes this as a weird strict way for backend to check credentials
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: publisher
