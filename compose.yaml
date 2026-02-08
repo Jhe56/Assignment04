@@ -10,7 +10,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     #referenced from docker getting started todo webapp
-    working_dir: /bookApp
+    #working_dir: /bookApp
 
   backend:
     build:
