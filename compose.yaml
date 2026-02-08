@@ -8,6 +8,4 @@ services:
     build: ./frontend
 
   backend:
-    build:
-      context: ./backend
-      dockerfile: ./backend.Dockerfile
+    build: ./backend
