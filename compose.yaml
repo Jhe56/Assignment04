@@ -33,14 +33,10 @@ services:
       CREATE_TABLE: books
     depends_on:
       - db
-    links:
-      - db
 
   #mysql readme and docker's getting started to-do-webapp
   db:
     image: mysql
-    ports:
-      - 8800:3306
     environment:
       #according to mysql a password is mandatory
       MYSQL_ROOT_PASSWORD: myAssignment04Password
