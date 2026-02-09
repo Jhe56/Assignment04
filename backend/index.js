@@ -25,7 +25,7 @@ function connectWithRetry() {
       return
     }
     console.log("Connected to MySQL")
-    connections.release()
+    connection.release()
   })
 }
 
