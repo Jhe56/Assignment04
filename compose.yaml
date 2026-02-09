@@ -19,8 +19,8 @@ services:
     environment:
       DB_HOST: db
       DB_NAME: test
-      DB_USER: postgres
-      DB_PASSWORD: postgres
+      DB_USER: root
+      DB_PASSWORD: ""
     depends_on:
       - db
 
@@ -29,8 +29,9 @@ services:
     container_name: postgres-db
     environment:
       POSTGRES_DB: test
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      #because our backend is hardcoded to only accept these creds
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: ""
     volumes:
       - db_data:/var/lib/postgresql/data
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
