@@ -21,25 +21,22 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     #mapping local host8800 to container port 3000
-    #to ammend error no response
+    #to be able to send requests to our backend
     ports:
       - 8800:3000
-
     #gpt describes this as a weird strict way for backend to check credentials
     environment:
       MYSQL_HOST: db
       MYSQL_USER: publisher
       MYSQL_PASSWORD: myAssignment04Password
       MYSQL_DB: test
+    depends_on:
+      - db
 
   #mysql readme and docker's getting started to-do-webapp
   db:
     image: mysql
-    volumes:
-      - ./:/database
     environment:
       #according to mysql a password is mandatory
       MYSQL_ROOT_PASSWORD: myAssignment04Password
       MYSQL_DATABASE: test
-      #
-      CREATE_TABLE: books
