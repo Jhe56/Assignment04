@@ -9,6 +9,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    volumes:
+      - ./:/frontend
     #referenced from docker getting started todo webapp
     #mapping host5173 to container 5173
     ports:
@@ -20,6 +22,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    volumes:
+      - ./:/backend
     ports:
       - 8081:3000
 
@@ -33,6 +37,8 @@ services:
   #mysql readme and docker's getting started to-do-webapp
   db:
     image: mysql
+    volumes:
+      - ./:/database
     environment:
       #according to mysql a password is mandatory
       MYSQL_ROOT_PASSWORD: myAssignment04Password
