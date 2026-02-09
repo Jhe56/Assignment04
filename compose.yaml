@@ -1,18 +1,12 @@
-#from the dockerdocs reference
-name: Assignment04
+name: gpt
 
-#referencing the slides
 services:
   frontend:
-    #referencing dockerdocs/reference/compose-file
-    #build looks within specified directory for a Dockerfile
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    #referenced from docker getting started todo webapp
-    #mapping host5173 to container 5173
     ports:
-      - 5173:5173
+      - "8080:80"
     depends_on:
       - backend
 
@@ -20,23 +14,28 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    #mapping local host8800 to container port 3000
-    #to be able to send requests to our backend
     ports:
-      - 8800:3000
-    #gpt describes this as a weird strict way for backend to check credentials
+      - "5000:5000"
     environment:
-      MYSQL_HOST: db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: myAssignment04Password
-      MYSQL_DB: test
+      DB_HOST: db
+      DB_NAME: test
+      DB_USER: postgres
+      DB_PASSWORD: postgres
     depends_on:
-      - localhost
+      - db
 
-  #mysql readme and docker's getting started to-do-webapp
-  localhost:
-    image: mysql
+  db:
+    image: postgres:16
+    container_name: postgres-db
     environment:
-      #according to mysql a password is mandatory
-      MYSQL_ROOT_PASSWORD: myAssignment04Password
-      MYSQL_DATABASE: test
+      POSTGRES_DB: test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+volumes:
+  db_data:
