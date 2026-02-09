@@ -29,14 +29,15 @@ services:
       MYSQL_HOST: db
       MYSQL_USER: publisher
       MYSQL_PASSWORD: myAssignment04Password
-#      MYSQL_DB: test
+      MYSQL_DB: test
+      CREATE_TABLE: books
     depends_on:
       - test
 
   #mysql readme and docker's getting started to-do-webapp
-  test:
+  db:
     image: mysql
     environment:
       #according to mysql a password is mandatory
       MYSQL_ROOT_PASSWORD: myAssignment04Password
-#      MYSQL_DATABASE: test
+      MYSQL_DATABASE: test
