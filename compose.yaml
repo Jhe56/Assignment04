@@ -12,7 +12,7 @@ services:
     #referenced from docker getting started todo webapp
     #mapping host5173 to container 5173
     ports:
-      - 8080:5173
+      - 5173:5173
 
   backend:
     build:
