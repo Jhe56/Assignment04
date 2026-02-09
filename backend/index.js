@@ -13,14 +13,19 @@ const db = mysql.createConnection({
 })
 
 //added from gpt in case db inits slower than backend
-db.connect(err => {
-  if (err) {
-    console.error("MySQL connection failed:", err.message)
-    return
-  }
-  console.log("Connected to MySQL")
-})
+//implements retry
+function connectWithRetry() {
+  db.connect(err => {
+    if (err) {
+      console.error("MySQL not ready, retrying in 5s:", err.message)
+      setTimeout(connectWithRetry, 5000)
+      return
+    }
+    console.log("Connected to MySQL")
+  })
+}
 
+connectWithRetry()
 
 app.use(express.json())//return json data using the api server postman
 

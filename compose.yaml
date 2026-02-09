@@ -44,3 +44,8 @@ services:
       MYSQL_DATABASE: test
     volumes:
       - ./db-init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pmyAssignment04pswd"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
