@@ -4,10 +4,11 @@ import cors from "cors"
 
 const app = express();
 
+//changed host and password to gpt recommended env host set at compose
 const db = mysql.createConnection({
-    host: "localhost",
+    host: process.env.MYSQL_HOST,
     user: "root",
-    password: "",
+    password: process.env.MYSQL_PASSWORD,
     database: "test"
 })
 

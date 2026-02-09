@@ -32,12 +32,14 @@ services:
       MYSQL_PASSWORD: myAssignment04pswd
       MYSQL_DB: test
     depends_on:
-      - localhost
+      - db
 
   #mysql readme and docker's getting started to-do-webapp
-  localhost:
+  db:
     image: mysql
     environment:
       #according to mysql a password is mandatory
       MYSQL_ROOT_PASSWORD: myAssignment04pswd
       MYSQL_DATABASE: test
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d
