@@ -13,6 +13,8 @@ services:
     #mapping host5173 to container 5173
     ports:
       - 5173:5173
+    depends_on:
+      - backend
 
   backend:
     build:
