@@ -12,6 +12,16 @@ const db = mysql.createConnection({
     database: "test"
 })
 
+//added from gpt in case db inits slower than backend
+db.connect(err => {
+  if (err) {
+    console.error("MySQL connection failed:", err.message)
+    return
+  }
+  console.log("Connected to MySQL")
+})
+
+
 app.use(express.json())//return json data using the api server postman
 
 app.use(cors())
