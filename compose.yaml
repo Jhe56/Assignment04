@@ -18,7 +18,10 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-      #gpt describes this as a weird strict way for backend to check credentials
+    ports:
+      - 5173:3000
+
+    #gpt describes this as a weird strict way for backend to check credentials
     environment:
       MYSQL_HOST: db
       MYSQL_USER: publisher
