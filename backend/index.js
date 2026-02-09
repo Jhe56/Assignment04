@@ -5,23 +5,27 @@ import cors from "cors"
 const app = express();
 
 //changed host and password to gpt recommended env host set at compose
-const db = mysql.createConnection({
+const db = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: "root",
     password: process.env.MYSQL_PASSWORD,
-    database: "test"
+    database: "test",
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 })
 
 //added from gpt in case db inits slower than backend
 //implements retry
 function connectWithRetry() {
-  db.connect(err => {
+  db.getConnection((err, connection) => {
     if (err) {
       console.error("MySQL not ready, retrying in 5s:", err.message)
       setTimeout(connectWithRetry, 5000)
       return
     }
     console.log("Connected to MySQL")
+    connections.release()
   })
 }
 
