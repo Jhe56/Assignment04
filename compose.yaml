@@ -12,7 +12,7 @@ services:
     #referenced from docker getting started todo webapp
     #mapping host5173 to container 5173
     ports:
-      - 8080:80
+      - 8080:5173
 
   backend:
     build:
@@ -20,7 +20,7 @@ services:
       dockerfile: Dockerfile
       #gpt describes this as a weird strict way for backend to check credentials
     environment:
-      MYSQL_HOST: mysql
+      MYSQL_HOST: db
       MYSQL_USER: publisher
       MYSQL_PASSWORD: myAssignment04Password
       MYSQL_DB: test
