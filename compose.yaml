@@ -20,8 +20,10 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    #mapping local host8800 to container port 3000
+    #to ammend error no response
     ports:
-      - 8081:3000
+      - 8800:3000
 
     #gpt describes this as a weird strict way for backend to check credentials
     environment:
@@ -39,3 +41,5 @@ services:
       #according to mysql a password is mandatory
       MYSQL_ROOT_PASSWORD: myAssignment04Password
       MYSQL_DATABASE: test
+      #
+      CREATE_TABLE: books
