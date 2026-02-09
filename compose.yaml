@@ -32,7 +32,7 @@ services:
       MYSQL_DB: test
       CREATE_TABLE: books
     depends_on:
-      - test
+      - db
 
   #mysql readme and docker's getting started to-do-webapp
   db:
