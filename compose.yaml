@@ -30,7 +30,6 @@ services:
       MYSQL_USER: publisher
       MYSQL_PASSWORD: myAssignment04Password
       MYSQL_DB: test
-      CREATE_TABLE: books
     depends_on:
       - db
 
