@@ -27,14 +27,14 @@ services:
     #gpt describes this as a weird strict way for backend to check credentials
     environment:
       MYSQL_HOST: db
-      MYSQL_USER: publisher
+      MYSQL_USER: root
       MYSQL_PASSWORD: myAssignment04Password
       MYSQL_DB: test
     depends_on:
-      - db
+      - localhost
 
   #mysql readme and docker's getting started to-do-webapp
-  db:
+  localhost:
     image: mysql
     environment:
       #according to mysql a password is mandatory
