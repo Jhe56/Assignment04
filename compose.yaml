@@ -37,7 +37,9 @@ services:
 
   #mysql readme and docker's getting started to-do-webapp
   db:
-    image: mysql
+    image: mysql:8.0
+    #because apparently mysql as an immage has issues
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       #according to mysql a password is mandatory
       MYSQL_ROOT_PASSWORD: myAssignment04pswd
