@@ -12,7 +12,7 @@ services:
     #referenced from docker getting started todo webapp
     #mapping host5173 to container 5173
     ports:
-      - 5173:5173
+      - 8080:5173
     depends_on:
       - backend
 
@@ -21,7 +21,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - 8080:3000
+      - 8081:3000
 
     #gpt describes this as a weird strict way for backend to check credentials
     environment:
