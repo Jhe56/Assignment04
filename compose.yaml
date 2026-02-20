@@ -39,7 +39,14 @@ services:
 
   #mysql readme and docker's getting started to-do-webapp
   db:
-    image: mysql:9.0
+    image: mysql:8.0
+
+    #offered fix that didn't change anything
+    # networks:
+    #     default:
+    #         aliases:
+    #             - localhost
+    
     #because apparently mysql as an immage has issues
     environment:
       #according to mysql a password is mandatory
