@@ -22,8 +22,8 @@ services:
       dockerfile: Dockerfile
     #mapping local host8800 to container port 3000
     #to be able to send requests to our backend
-    ports:
-      - 8800:3000
+#    ports:
+#      - 8800:3000
     #gpt describes this as a weird strict way for backend to check credentials
     environment:
       MYSQL_HOST: db
